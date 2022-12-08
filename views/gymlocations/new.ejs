@@ -1,0 +1,111 @@
+
+<% layout('layouts/boilerplate')%>
+<!-- <div class="row">
+    <h1 class="text-center">New Gym Location</h1>
+    <div class="col-6 offset-3">
+        <form action="/gymlocations" method="POST" novalidate>
+            <div class="mb-3">
+                <label class="form-label" for="title">Title</label>
+                <input class="form-control" type="text" id="title" name="gymlocations[title]" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="location">Location</label>
+                <input class="form-control" type="text" id="location" name="gymlocations[location]" required>
+            </div>       
+            <div class="mb-3">
+                <label class="form-label" for="image">Image Url</label>
+                <input class="form-control" type="text" id="image" name="gymlocations[image]" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="price">Gym Location Price</label>
+                <div class="input-group">
+                    <span class="input-group-text" id="price-label">$</span>
+                    <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="price" aria-describedby="price-label" name="gymlocations[price]" required>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="description">Description</label>
+                <textarea class="form-control" type="text" id="description" name="gymlocations[description]" required></textarea>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-success">Add Gym Location</button>
+            </div>
+        </form>
+        <a href="/gymlocations">All Gym Locations</a>
+    </div>
+</div> 
+<script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+(() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+</script> 
+ -->
+
+<h1 class="text-center">New Gym Location</h1>
+<form action="/gymlocations" method="POST" class="row g-3 needs-validation" enctype="multipart/form-data" novalidate>
+  <div class="col-md-4">
+    <label for="title" class="form-label">Name</label>
+    <input class="form-control" type="text" id="title" name="gymlocations[title]" required>
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+  </div>
+  <div class="col-md-4">
+    <label for="location" class="form-label">Location</label>
+    <input class="form-control" type="text" id="location" name="gymlocations[location]" required>
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+  </div>
+  <div class="col-md-4">
+    <label for="price" class="form-label">Price</label>
+    <div class="input-group">
+      <span class="input-group-text" id="price-label">$</span>
+      <input class="form-control" type="text" id="price" name="gymlocations[price]" aria-describedby="price-label" placeholder="0.00" required>
+      <div class="invalid-feedback">
+        Please enter a price.
+      </div>
+    </div>
+  </div>
+  <div class="input-group">
+  <input type="file" class="form-control" id="images" aria-describedby="inputGroupFileAddon04" aria-label="Upload" name="image" multiple>
+  </div>
+  <!-- <div class="mb-3">
+    <label class="form-label" for="image">Image Url</label>
+    <input class="form-control" type="text" id="image" name="gymlocations[image]" required>
+    <div class="invalid-feedback">
+        Please provide a valid URL.
+    </div> -->
+  </div>
+  <div class="col-md-6">
+    <label for="description" class="form-label">Description</label>
+    <textarea class="form-control" type="text" id="description" name="gymlocations[description]" required></textarea>
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+  </div>
+  <div class="col-12">
+    <button class="btn btn-primary">Add Gym Location</button>
+  </div>
+</form>
+  <div class="row mb-3">
+       <a  href="/gymlocations">All Gym Locations</a>   
+  </div>

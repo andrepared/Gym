@@ -1,0 +1,64 @@
+<% layout('layouts/boilerplate') %>
+  <%# We're creating a new gym location --> so
+    we'll have to create a form. With a POST req. %>
+
+    <div class="row">
+      <h1 class="text-center">Edit Gym Location</h1>
+      <div class="col-6 offset-3">
+        <form class="needs-validation" action="/gymlocations/<%=gymlocation._id%>?_method=PUT" method="POST" novalidate enctype="multipart/form-data">
+          <%# Need to be a PUT or PATCH %>
+            <div class="mb-3">
+              <label class="form-label" for="title">Title</label>
+              <input class="form-control" type="text" id="title" name="gymlocations[title]"
+                value="<%= gymlocation.title %>" required />
+            </div>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="location">Location</label>
+              <input class="form-control" type="text" id="location" name="gymlocations[location]"
+                value="<%= gymlocation.location %>" required />
+            </div>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="price">Gym Location Price</label>
+              <div class="input-group">
+                <span class="input-group-text" id="price-label">$</span>
+                <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="price"
+                  aria-describedby="price-label" name="gymlocations[price]" value="<%= gymlocation.price %>" required />
+              </div>
+            </div>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="description">Description</label>
+              <textarea class="form-control" type="text" id="description" name="gymlocations[description]" 
+              required><%= gymlocation.description %></textarea>
+            </div>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+            <label for="images">Add More Photos</label>
+              <div class="input-group mb-3">
+              <input type="file" class="form-control" id="images" aria-describedby="UploadImages" aria-label="Upload" name="image" multiple>
+              </div>
+              <div class="mb-3">
+                <% gymlocation.images.forEach(function(img, i) { %>
+                  <img src="<%=img.thumbnail %>" class="img-thumbnail"alt="">
+                  <div class="form-check-inline">
+                    <input type="checkbox" id="image-<%=i%>" name="deleteImages[]" value="<%=img.filename%>">
+                  </div>
+                  <label for="image-<%=i%>">Delete?</label>
+                  <% }) %>  
+              </div>
+            <div class="mb-3">
+              <button class="btn btn-success">Update Gym Location</button>
+            </div>
+        </form>
+        <a href="/gymlocations/<%= gymlocation._id %> ">Back to Gym Location</a>
+      </div>
+    </div>
